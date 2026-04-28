@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rol_id');
+            $table->foreignId('rol_id')->default(1);
             $table->string('name',100);
             $table->string('email',100)->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -29,9 +29,9 @@ return new class extends Migration
         });
 
         Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id', 191)->primary();
+            $table->string('id', 200)->primary();
             $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
+            $table->string('ip_address', 200)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
