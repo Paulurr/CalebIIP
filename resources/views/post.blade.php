@@ -21,7 +21,7 @@
         @foreach($posts as $post)
             <div class="bg-white p-4 rounded shadow">
                 <div class="">
-                    <p class="text-xl font-semibold mb-2">{{ App\Models\User::find($post->user_id)->name }}</p>
+                    <p class="text-xl font-semibold mb-2"></p>
                 </div>
                 <div class="h-30">
                     <h2 class="text-xl font-semibold mb-2">{{ $post->title }}</h2>
