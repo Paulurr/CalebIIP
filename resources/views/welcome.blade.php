@@ -19,11 +19,11 @@
             </style>
         @endif
     </head>
-    <body>
+    <body >
         <x-nav>
         </x-nav>
-        <div class="h-screen w-full flex flex-col items-end justify-center relative p-10 bg-blue-50">
-            <img src="{{ asset('/storage/paper-sticky-note-png.webp') }}" alt="" class="absolute top-[5%] left-[5%]">
+        <div class="h-screen w-full flex flex-col items-end justify-center relative p-10">
+            <img src="{{ asset('/storage/paper-sticky-note-png.webp') }}" alt="" class="object-fill absolute top-[5%] left-[5%]  hidden xl:block">
             <h1 class="text-5xl font-bold">Welcome to PostApp</h1>
             <a href="/post" class="p-5 bg-blue-500 hover:bg-blue-600 transition-colors text-white rounded-md mt-15 m-3">Ver Posts</a>
             <a href="/log_in" class="p-5 bg-yellow-500 hover:bg-yellow-600 transition-colors text-white rounded-md m-3">Iniciar Sesión</a>

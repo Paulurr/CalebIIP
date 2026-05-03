@@ -20,16 +20,33 @@ Route::middleware(['guest'])->group(function () {
         return view('sign_up');
     });    
     
-    Route::post('log_in', [App\Http\Controllers\UserController::class, 'log_in']);
-    Route::post('sign_up', [App\Http\Controllers\UserController::class, 'sign_up']);
+    Route::post('log_in', [UserController::class, 'log_in']);
+    Route::post('sign_up', [UserController::class, 'sign_up']);
 });
 
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('log_out', [App\Http\Controllers\UserController::class, 'log_out']);
+    Route::get('log_out', [UserController::class, 'log_out']);
+    Route::get('profile', [UserController::class, 'profile']);
 
 });
+
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('admin', [UserController::class, 'admin']);
+    Route::post('/users', [UserController::class, 'store']);
+    Route::put('/users/{id}', [UserController::class, 'update']);
+    Route::delete('/users/{id}', [UserController::class, 'delete']);
+});
+
+Route::middleware(['moderator'])->group(function () {
+    Route::get('admin', [UserController::class, 'admin']);
+    Route::put('/post/{id}', [PostController::class, 'update']);
+    Route::delete('/post/{id}', [PostController::class, 'delete']);
+});
+
+
 
 
 Route::get('/post', [PostController::class , 'index']);

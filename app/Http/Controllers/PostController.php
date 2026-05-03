@@ -7,26 +7,36 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        return view('post', ['posts' => Post::all()]);
+        return view('post', ['posts' => Post::with('user')->get()]);
     }
-    public function store(Request $request){
+     // CREAR
+    public function store(Request $request)
+    {
         $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required',
             'content' => 'required',
+            'user_id' => 'required'
         ]);
-        Post::create([
-            'user_id' => auth()->id(),
-            'title' => $request->title,
-            'content' => $request->content,
-        ]);
-        return redirect('/post');
+
+        Post::create($request->all());
+
+        return back();
     }
-    function delete($id){
+
+    // ACTUALIZAR
+    public function update(Request $request, $id)
+    {
         $post = Post::findOrFail($id);
-        if($post->user_id != auth()->id()){
-            abort(403);
-        }
-        $post->delete();
-        return redirect('/post');
+
+        $post->update($request->only('title', 'content'));
+
+        return back();
+    }
+
+    // ELIMINAR
+    public function delete($id)
+    {
+        Post::findOrFail($id)->delete();
+        return back();
     }
 }

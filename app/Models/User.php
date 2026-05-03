@@ -16,7 +16,12 @@ class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
-
+    protected $fillable = [
+        'rol_id',
+        'name',
+        'email',
+        'password'
+    ];
     /**
      * Get the attributes that should be cast.
      *
@@ -28,5 +33,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+    public function rol(){
+        return $this->belongsTo(Rol::class);
     }
 }

@@ -1,9 +1,9 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <x-nav></x-nav>
 <div class="h-screen w-full flex items-center justify-center flex-col">
-    <h1 class="text-3xl font-bold mb-4">Iniciar Sesión</h1>
-    <form action="/log_in" method="POST" class="max-w-md">
+    <form action="/log_in" method="POST" class="max-w-md p-5 bg-white rounded shadow border-b-blue-700 border-b-2 lg:w-1/4 w-full">
         @csrf
+        <h1 class="text-3xl font-bold mb-4">Iniciar Sesión</h1>
         <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
             <input type="email" name="email" id="email" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">

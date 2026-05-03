@@ -4,6 +4,9 @@
     <div class="nav-logo">PostApp</div>
 
     <ul class="nav-links">
+        @guest
+            <li><a href="/">Inicio</a></li>
+        @endguest
         <li><a href="/post">Posts</a></li>
 
         @guest
@@ -13,7 +16,12 @@
 
         @auth
             <li><a href="/profile">Perfil</a></li>
+            @if (auth()->user()->rol_id == 3 || auth()->user()->rol_id == 2)
+                <li><a href="/admin" class="nav-btn">Admin Panel</a></li>
+                
+            @endif
             <li><a href="/log_out" class="nav-btn">Cerrar sesión</a></li>
+            
         @endauth
     </ul>
 </nav>

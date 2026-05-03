@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -51,5 +52,59 @@ class UserController extends Controller
     public function log_out(){
         Auth::logout();
         return redirect('/');
+    }
+    public function profile(){
+        return view('profile' , ['user' => auth()->user()->with('rol'), 'posts' => auth()->user()->posts]);
+    }
+
+    public function admin()
+    {
+        $users = User::with('rol', 'posts')->get();
+        $user = auth()->user();
+
+        return view('admin', compact('users', 'user'));
+    }
+
+    // CREAR
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'rol_id' => 'required'
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'rol_id' => $request->rol_id
+        ]);
+
+        return back();
+    }
+
+    // ACTUALIZAR
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $data = $request->only('name', 'email', 'rol_id');
+
+        if ($request->password) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $user->update($data);
+
+        return back();
+    }
+
+    // ELIMINAR
+    public function delete($id)
+    {
+        User::findOrFail($id)->delete();
+        return back();
     }
 }
