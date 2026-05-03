@@ -74,3 +74,4 @@
     @endauth
 
 </div>
+<x-footer />

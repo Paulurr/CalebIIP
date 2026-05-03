@@ -44,7 +44,6 @@
         @endif
        
 
-        <!-- 🔹 FORM POST -->
         <form id="post-form" method="POST" action="/post"
             class="bg-white p-6 rounded shadow border-t-4 border-green-600">
             @csrf
@@ -74,7 +73,6 @@
 
     </div>
 
-    <!-- 🔹 TABLA -->
     <div class="bg-white p-6 rounded shadow">
 
         <h2 class="text-xl font-bold mb-4">Usuarios</h2>
@@ -186,3 +184,4 @@
     </div>
 
 </div>
+<x-footer />

@@ -2,9 +2,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let open_id = null;
 
-    // =========================
-    // 🔹 TOGGLE POST
-    // =========================
     document.querySelectorAll('.btn-post').forEach(btn => {
 
         btn.addEventListener('click', () => {
@@ -28,9 +25,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    // =========================
-    // 🔹 FORM POST
-    // =========================
     const postForm = document.getElementById('post-form');
 
     if (postForm) {
@@ -54,7 +48,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 const method = postForm.querySelector('input[name="_method"]');
                 if (method) method.remove();
 
-                // 🔥 usar el ID del botón o fallback al usuario logueado
                 postUser.value = btn.dataset.id || originalUserId;
 
                 postUserName.textContent = "Usuario: " + btn.dataset.name;
@@ -67,7 +60,6 @@ window.addEventListener("DOMContentLoaded", () => {
                 postCancel.classList.add("hidden");
             });
         });
-        // ✏️ EDITAR POST
         document.querySelectorAll('.btn-edit-post').forEach(btn => {
             btn.addEventListener('click', () => {
 
@@ -100,7 +92,6 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // ❌ CANCELAR
         postCancel.addEventListener('click', () => {
 
             postForm.reset();
@@ -124,9 +115,6 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // =========================
-    // 🔹 FORM USUARIO (SOLO SI EXISTE)
-    // =========================
     const userForm = document.getElementById('user-form');
 
     if (userForm) {
@@ -141,7 +129,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const userRole = document.getElementById('user-role');
         const userPassword = document.getElementById('user-password');
 
-        // ✏️ EDITAR USUARIO
         document.querySelectorAll('.btn-edit').forEach(btn => {
             btn.addEventListener('click', () => {
 
@@ -173,7 +160,6 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // ❌ CANCELAR
         userCancel.addEventListener('click', () => {
 
             userForm.reset();

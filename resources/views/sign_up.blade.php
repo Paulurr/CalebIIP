@@ -23,3 +23,4 @@
         <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 transition-colors text-white font-bold py-2 px-4 rounded-md">Registrarse</button>
     </form>
 </div>
+<x-footer />
