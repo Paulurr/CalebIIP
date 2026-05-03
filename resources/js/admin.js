@@ -28,13 +28,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const postForm = document.getElementById('post-form');
 
     if (postForm) {
-
         const postTitle = document.getElementById('post-title');
-        const postubmit = document.getElementById('post-submit');
+        const postSubmit = document.getElementById('post-submit');
         const postCancel = document.getElementById('post-cancel');
 
         const postId = document.getElementById('post-id');
         const postUser = document.getElementById('post-user');
+        const originalUserId = postUser ? postUser.value : null;
         const postUserName = document.getElementById('post-user-name');
         const postTitleInput = document.getElementById('post-title-input');
         const postContent = document.getElementById('post-content');
@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 postForm.action = "/post";
                 postTitle.textContent = "Crear Post";
-                postubmit.textContent = "Guardar";
+                postSubmit.textContent = "Guardar";
 
                 postCancel.classList.add("hidden");
             });
@@ -86,7 +86,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
 
                 postTitle.textContent = "Editar Post";
-                postubmit.textContent = "Actualizar";
+                postSubmit.textContent = "Actualizar";
 
                 postCancel.classList.remove("hidden");
             });
@@ -108,7 +108,7 @@ window.addEventListener("DOMContentLoaded", () => {
             postForm.action = "/post";
 
             postTitle.textContent = "Crear Post";
-            postubmit.textContent = "Guardar";
+            postSubmit.textContent = "Guardar";
 
             postUserName.classList.add("hidden");
             postCancel.classList.add("hidden");
